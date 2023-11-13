@@ -15,12 +15,11 @@ public class MecanumPIDTest extends LinearOpMode {
         waitForStart();
         runtime.reset();
         while (opModeIsActive()) {
-
             double y = -gamepad1.left_stick_y;
             double x = gamepad1.left_stick_x;
             double rx = gamepad1.right_stick_x;
             double ry = gamepad1.right_stick_y;
-            telemetry.addData("Joystick Direction:", String.valueOf(x) + String.valueOf(y));
+            telemetry.addData("Joystick Direction:", String.valueOf(x) + "," + String.valueOf(y));
             telemetry.update();
             wheelController.update();
             wheelController.setDirection(x, y, rx);

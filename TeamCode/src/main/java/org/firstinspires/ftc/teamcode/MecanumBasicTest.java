@@ -23,17 +23,20 @@ public class MecanumBasicTest extends LinearOpMode {
         leftBackWheel.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         rightBackWheel.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightBackWheel.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        //claw = hardwareMa-p.get(Servo.class, "claw");
+        //claw = hardwareMap.get(Servo.class, "claw");
 
         // Set the direction motors will move
-        leftFrontWheel.setDirection(DcMotor.Direction.REVERSE);
+        leftFrontWheel.setDirection(DcMotor.Direction.FORWARD);
         rightFrontWheel.setDirection(DcMotor.Direction.FORWARD);
         rightBackWheel.setDirection(DcMotor.Direction.FORWARD);
-        leftBackWheel.setDirection(DcMotor.Direction.REVERSE);
+        leftBackWheel.setDirection(DcMotor.Direction.FORWARD);
 
         waitForStart();
         runtime.reset();
+
         while (opModeIsActive()) {
+
+
             double y = -gamepad1.left_stick_y;
             double x = gamepad1.left_stick_x;
             double rx = gamepad1.right_stick_x;
