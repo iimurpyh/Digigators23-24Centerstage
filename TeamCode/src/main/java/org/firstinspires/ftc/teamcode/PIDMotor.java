@@ -12,11 +12,12 @@ public class PIDMotor {
     // DcMotorEx is for motors controlled by a Lynx Expansion Hub and has some extra methods
     // like getVelocity
     DcMotorEx motor;
-    PID pid;
+    PID velocityPid;
 
     public PIDMotor(DcMotor motor) {
         this.motor = (DcMotorEx) motor; // Turn DcMotor into DcMotorEx
-        this.pid = new PID();
+        this.velocityPid = new PID();
+
     }
 
     public void init() {
@@ -27,6 +28,11 @@ public class PIDMotor {
 
     public void setTarget(double target) {
         this.target = target;
+    }
+
+    public void runToPosition(int position) {
+        int goal = motor.getCurrentPosition() - position;
+
     }
 
     public void update() {

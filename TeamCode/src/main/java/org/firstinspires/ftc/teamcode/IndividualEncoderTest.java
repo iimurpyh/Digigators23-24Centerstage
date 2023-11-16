@@ -34,7 +34,7 @@ public class IndividualEncoderTest extends LinearOpMode {
         while (opModeIsActive()) {
             double y = -gamepad1.left_stick_y;
             wheel.setPower(y);
-            telemetry.addData("Encoder Value", wheel.getVelocity());
+            telemetry.addData("Encoder Value", wheel.getCurrentPosition());
             telemetry.update();
 
         }
