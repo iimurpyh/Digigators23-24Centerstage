@@ -7,15 +7,12 @@ public class PID {
     private double val;
     private double target;
     private double error;
-
     private static final double Kp = 0.0004375;
     private static final double Ki = 0.0002;
     private static final double Kd = 0;
     private double last_error;
-
     private double integralSum = 0;
     private static final double CONTROL_LOOP_TIME_STEP = 0.2;
-
     private static final double MAX_INTEGRAL_TERM = 800;
     private static final double TARGET_DEAD_ZONE = 30;
 
@@ -39,7 +36,6 @@ public class PID {
             return getNewVelocity();
         }
     }
-
     private double getNewVelocity(){
 
         double p = Kp * target;
@@ -50,5 +46,4 @@ public class PID {
         last_error = error;
         return sum;
     }
-
 }

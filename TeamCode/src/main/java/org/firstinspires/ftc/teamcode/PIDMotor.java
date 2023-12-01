@@ -30,12 +30,9 @@ public class PIDMotor {
         this.target = target;
     }
 
-    public void runToPosition(int position) {
-        int goal = motor.getCurrentPosition() - position;
-
-    }
-
-    public void update() {
-        motor.setPower(target); //pid.updatePID(motor.getVelocity(), target, motor.getPower())
+    public double update() {
+        motor.setPower(target);
+        target = velocityPid.updatePID(motor.getVelocity(), target, motor.getPower());
+        return target;
     }
 }

@@ -27,16 +27,14 @@ public class MecanumBasicTest extends LinearOpMode {
 
         // Set the direction motors will move
         leftFrontWheel.setDirection(DcMotor.Direction.FORWARD);
-        rightFrontWheel.setDirection(DcMotor.Direction.FORWARD);
-        rightBackWheel.setDirection(DcMotor.Direction.FORWARD);
-        leftBackWheel.setDirection(DcMotor.Direction.FORWARD);
+        rightFrontWheel.setDirection(DcMotor.Direction.REVERSE);
+        rightBackWheel.setDirection(DcMotor.Direction.REVERSE);
+        leftBackWheel.setDirection(DcMotor.Direction.REVERSE);
 
         waitForStart();
         runtime.reset();
 
         while (opModeIsActive()) {
-
-
             double y = -gamepad1.left_stick_y;
             double x = gamepad1.left_stick_x;
             double rx = gamepad1.right_stick_x;

@@ -5,10 +5,10 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 // Represents a mecanum drivetrain with 4 wheels controlled by DcMotors.
 public class MecanumDrive {
-    private PIDMotor frontLeft;
-    private PIDMotor backLeft;
-    private PIDMotor frontRight;
-    private PIDMotor backRight;
+    public PIDMotor frontLeft;
+    public PIDMotor backLeft;
+    public PIDMotor frontRight;
+    public PIDMotor backRight;
 
     // Default motor names to look for if none are given.
     // These are probably the only ones that will be used. Not like any OpModes would want another set of 4 motors.
@@ -37,6 +37,7 @@ public class MecanumDrive {
         // This ensures all the powers maintain the same ratio, but only when
         // at least one is out of the range [-1, 1]
         double denominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(rotate), 1);
+        denominator -= 0.2;
 
         // Convert x, y, and rotation movement directions into wheel rotation
         // Math from Game Manual 0
@@ -46,10 +47,7 @@ public class MecanumDrive {
         backRight.setTarget((y + x - rotate) / denominator);
     }
 
-    public void update() {
-        frontLeft.update();
-        frontRight.update();
-        backLeft.update();
-        backRight.update();
+    public Double[] update() {
+        return new Double[]{frontLeft.update(), frontRight.update(), backLeft.update(), backRight.update()};
     }
 }
